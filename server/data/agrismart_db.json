@@ -1,0 +1,329 @@
+{
+  "users": [
+    {
+      "id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "email": "agronomist@farmcorp.com",
+      "fullName": "Dr. Rajesh Patel",
+      "farmName": "Patel Agro-Ecosystems Research & Production Farm",
+      "region": "Indo-Gangetic Basin, Punjab",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "fields": [
+    {
+      "id": "acde7aed-f702-4b60-8c1d-0c8a579f7eeb",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "name": "Brahmaputra Valley Tea & Spice Block",
+      "acreage": "35.5",
+      "soilType": "Laterite Soil",
+      "irrigationType": "Sprinkler System",
+      "latitude": "26.2006",
+      "longitude": "92.9376",
+      "historicalNotes": "Rich in iron and aluminum oxides; requires monitored potassium supplementation.",
+      "createdAt": "2026-09-30T07:56:53.219Z"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "name": "North Delta Valley - Plot A",
+      "acreage": "45.50",
+      "soilType": "Alluvial Soil",
+      "irrigationType": "Drip Irrigation (High Efficiency)",
+      "latitude": "30.9009650",
+      "longitude": "75.8572750",
+      "historicalNotes": "Previously cultivated with Wheat-Rice rotation. Responds well to split-nitrogen dosing.",
+      "createdAt": "2026-08-31T07:00:49.186Z"
+    },
+    {
+      "id": "b2c3d4e5-f6a1-4b2c-9d3e-4f5a6b7c8d9e",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "name": "Deccan Plateau Cotton Plot",
+      "acreage": "72.00",
+      "soilType": "Black Cotton Soil",
+      "irrigationType": "Sprinkler System",
+      "latitude": "19.8761650",
+      "longitude": "75.3433140",
+      "historicalNotes": "High clay swelling dynamics. Deep crack retention in dry months. Requires monitored potassium.",
+      "createdAt": "2026-09-10T07:00:49.186Z"
+    },
+    {
+      "id": "c3d4e5f6-a1b2-4c3d-ae4f-5a6b7c8d9e0f",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "name": "Eastern Sandy Loam Highlands",
+      "acreage": "28.30",
+      "soilType": "Sandy Loam",
+      "irrigationType": "Canal / Siphon System",
+      "latitude": "23.3441000",
+      "longitude": "85.3095620",
+      "historicalNotes": "Rapid percolation and leaching vulnerability. Organic carbon enrichment required prior to sowing.",
+      "createdAt": "2026-09-20T07:00:49.186Z"
+    }
+  ],
+  "cropAdvisories": [
+    {
+      "id": "851f2cd6-4ef5-4039-b462-a7ffd41cc6d6",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "fieldId": "a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d",
+      "cropName": "Yellow Mustard / Rapeseed",
+      "variety": "Pusa Bold / NRCHB-101",
+      "confidenceScore": "92",
+      "soilNitrogenPpm": "160",
+      "soilPhosphorusPpm": "22",
+      "soilPotassiumPpm": "210",
+      "soilPh": "6.4",
+      "projectedYieldQuintalsPerAcre": "11.5",
+      "advisorySummary": "Comprehensive precision advisory generated for North Delta Valley - Plot A. Calibrated for 6.4 pH, 160 ppm Nitrogen, and 40 mm seasonal rainfall. Employs split-nitrogen application and targeted physiological stage management.",
+      "actionPlan": {
+        "cropName": "Yellow Mustard / Rapeseed",
+        "variety": "Pusa Bold / NRCHB-101",
+        "confidenceScore": 92,
+        "projectedYieldQuintals": 11.5,
+        "summary": "Comprehensive precision advisory generated for North Delta Valley - Plot A. Calibrated for 6.4 pH, 160 ppm Nitrogen, and 40 mm seasonal rainfall. Employs split-nitrogen application and targeted physiological stage management.",
+        "soilAmendments": [
+          "OPTIMAL pH RANGE: Soil pH 6.40 is well-buffered for active macro- and micro-nutrient cation exchange.",
+          "LOW NITROGEN INTERVENTION (160 ppm): Initiate 3-split nitrogen schedule: 35% basal, 40% active vegetative top-dressing, and 25% boot-stage foliar application. Supplement with 8 tonnes enriched Farmyard Manure (FYM)."
+        ],
+        "lifecyclePhases": [
+          {
+            "phaseName": "Seeding & Germination / Stand Establishment",
+            "dayRange": "Days 1-18",
+            "irrigationSchedule": "Light daily drip pulses (1.5-2.0 hours) maintaining 80% field capacity.",
+            "fertilizationAction": "Basal placement of DAP + MOP with 40% primary Nitrogen.",
+            "pestSurveillance": "Monitor for seed rot, damping-off (Pythium spp.), and cutworms in first 14 days."
+          },
+          {
+            "phaseName": "Vegetative Tillering & Canopy Architecture",
+            "dayRange": "Days 19-50",
+            "irrigationSchedule": "Irrigate at 18-21 day intervals or when soil tensiometer reads > 45 kPa.",
+            "fertilizationAction": "First top dressing: Broadcast 45 kg Neem-Coated Urea prior to scheduled irrigation.",
+            "pestSurveillance": "Scout foliage twice weekly for stem borers, leaf miners, and foliar blight spots."
+          },
+          {
+            "phaseName": "Flowering & Reproductive Inflorescence",
+            "dayRange": "Days 51-85",
+            "irrigationSchedule": "CRITICAL MOISTURE WINDOW: Strictly avoid water deficit stress during floret anthesis.",
+            "fertilizationAction": "Foliar nutrition: 1.0% Potassium Nitrate (13:0:45) + 0.2% Boron (Solubor) spray.",
+            "pestSurveillance": "Monitor for aphids, thrips, and head blight; spray neem-oil bio-pesticide if threshold breached."
+          },
+          {
+            "phaseName": "Grain/Fiber Maturation & Harvest Window",
+            "dayRange": "Days 86-120",
+            "irrigationSchedule": "Terminal drying: Discontinue all supplemental irrigation 10-14 days prior to harvest.",
+            "fertilizationAction": "No further chemical fertilizers. Enable natural nutrient remobilization to grain.",
+            "pestSurveillance": "Check moisture percentage (12-14%); schedule combine harvester during clear dry weather."
+          }
+        ],
+        "economicOutlook": {
+          "estimatedCostPerAcre": 9800,
+          "estimatedRevenuePerAcre": 48300,
+          "recommendedMarketWindow": "March Early Spring Crushers"
+        },
+        "targetSeason": "Rabi / Winter",
+        "weatherForecast": {
+          "avgTemperatureCelsius": 20,
+          "rainfallForecastMm": 40,
+          "relativeHumidityPercent": 55
+        }
+      },
+      "createdAt": "2026-09-30T08:01:30.423Z"
+    },
+    {
+      "id": "5846e5e2-af23-4379-8149-84ceb67f6cd4",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "fieldId": "a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d",
+      "cropName": "Hard Winter Wheat (Triticum aestivum)",
+      "variety": "HD-3226 (Pusa Yashasvi)",
+      "confidenceScore": "88",
+      "soilNitrogenPpm": "110",
+      "soilPhosphorusPpm": "18",
+      "soilPotassiumPpm": "140",
+      "soilPh": "5.2",
+      "projectedYieldQuintalsPerAcre": "24.5",
+      "advisorySummary": "Comprehensive precision advisory generated for North Delta Valley - Plot A. Calibrated for 5.2 pH, 110 ppm Nitrogen, and 65 mm seasonal rainfall. Employs split-nitrogen application and targeted physiological stage management.",
+      "actionPlan": {
+        "cropName": "Hard Winter Wheat (Triticum aestivum)",
+        "variety": "HD-3226 (Pusa Yashasvi)",
+        "confidenceScore": 88,
+        "projectedYieldQuintals": 24.5,
+        "summary": "Comprehensive precision advisory generated for North Delta Valley - Plot A. Calibrated for 5.2 pH, 110 ppm Nitrogen, and 65 mm seasonal rainfall. Employs split-nitrogen application and targeted physiological stage management.",
+        "soilAmendments": [
+          "CRITICAL ACIDITY CORRECTION: Soil pH is 5.20 (< 5.5). Broadcast 1105 kg Agricultural Liming Material (Agricultural Limestone / Dolomite CaCO3/MgCO3) per acre 3-4 weeks prior to sowing to unlock phosphorus bioavailability.",
+          "LOW NITROGEN INTERVENTION (110 ppm): Initiate 3-split nitrogen schedule: 35% basal, 40% active vegetative top-dressing, and 25% boot-stage foliar application. Supplement with 8 tonnes enriched Farmyard Manure (FYM).",
+          "PHOSPHORUS DEFICIENCY (18 ppm): Incorporate 50-60 kg/acre Di-Ammonium Phosphate (DAP 18:46:0) placed 5cm below seed furrow for vigorous early rooting.",
+          "POTASSIUM ENHANCEMENT (140 ppm): Apply 30-40 kg Muriate of Potash (MOP 0:0:60) per acre to fortify plant vascular tissue against drought and stem lodging."
+        ],
+        "lifecyclePhases": [
+          {
+            "phaseName": "Seeding & Germination / Stand Establishment",
+            "dayRange": "Days 1-18",
+            "irrigationSchedule": "Light daily drip pulses (1.5-2.0 hours) maintaining 80% field capacity.",
+            "fertilizationAction": "Pre-sowing lime incorporation + basal split: 35% Nitrogen, 100% P2O5, 100% K2O.",
+            "pestSurveillance": "Monitor for seed rot, damping-off (Pythium spp.), and cutworms in first 14 days."
+          },
+          {
+            "phaseName": "Vegetative Tillering & Canopy Architecture",
+            "dayRange": "Days 19-50",
+            "irrigationSchedule": "Irrigate at 18-21 day intervals or when soil tensiometer reads > 45 kPa.",
+            "fertilizationAction": "First top dressing: Broadcast 45 kg Neem-Coated Urea prior to scheduled irrigation.",
+            "pestSurveillance": "Scout foliage twice weekly for stem borers, leaf miners, and foliar blight spots."
+          },
+          {
+            "phaseName": "Flowering & Reproductive Inflorescence",
+            "dayRange": "Days 51-85",
+            "irrigationSchedule": "CRITICAL MOISTURE WINDOW: Strictly avoid water deficit stress during floret anthesis.",
+            "fertilizationAction": "Foliar nutrition: 1.0% Potassium Nitrate (13:0:45) + 0.2% Boron (Solubor) spray.",
+            "pestSurveillance": "Monitor for aphids, thrips, and head blight; spray neem-oil bio-pesticide if threshold breached."
+          },
+          {
+            "phaseName": "Grain/Fiber Maturation & Harvest Window",
+            "dayRange": "Days 86-120",
+            "irrigationSchedule": "Terminal drying: Discontinue all supplemental irrigation 10-14 days prior to harvest.",
+            "fertilizationAction": "No further chemical fertilizers. Enable natural nutrient remobilization to grain.",
+            "pestSurveillance": "Check moisture percentage (12-14%); schedule combine harvester during clear dry weather."
+          }
+        ],
+        "economicOutlook": {
+          "estimatedCostPerAcre": 14500,
+          "estimatedRevenuePerAcre": 58800,
+          "recommendedMarketWindow": "April-May Peak Procurement"
+        },
+        "targetSeason": "Rabi / Winter",
+        "weatherForecast": {
+          "avgTemperatureCelsius": 19,
+          "rainfallForecastMm": 65,
+          "relativeHumidityPercent": 58
+        }
+      },
+      "createdAt": "2026-09-30T07:03:02.529Z"
+    },
+    {
+      "id": "d4e5f6a1-b2c3-4d4e-bf5a-6b7c8d9e0f1a",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "fieldId": "a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d",
+      "cropName": "HD-3226 High-Yield Wheat",
+      "variety": "Pusa Yashasvi (HD-3226)",
+      "confidenceScore": "94.50",
+      "soilNitrogenPpm": "220.00",
+      "soilPhosphorusPpm": "28.50",
+      "soilPotassiumPpm": "310.00",
+      "soilPh": "6.80",
+      "projectedYieldQuintalsPerAcre": "24.50",
+      "advisorySummary": "Optimal sowing window recommended for late Rabi cycle. Soil pH (6.8) is in prime neutral range. Balanced basal NPK recommended with second split during Crown Root Initiation.",
+      "actionPlan": {
+        "cropName": "HD-3226 High-Yield Wheat",
+        "variety": "Pusa Yashasvi (HD-3226)",
+        "confidenceScore": 94.5,
+        "projectedYieldQuintals": 24.5,
+        "summary": "Optimal sowing window recommended for late Rabi cycle. Soil pH (6.8) is in prime neutral range. Balanced basal NPK recommended with second split during Crown Root Initiation.",
+        "soilAmendments": [
+          "Apply 10 tonnes Farmyard Manure (FYM) per acre prior to primary tillage",
+          "Basal dose of 50kg DAP + 25kg MOP per acre",
+          "Top dressing with 40kg Urea at 21 days after sowing (CRI stage)"
+        ],
+        "lifecyclePhases": [
+          {
+            "phaseName": "Sowing & Crown Root Initiation",
+            "dayRange": "Days 1-25",
+            "irrigationSchedule": "Light pre-sowing soaking followed by first crucial irrigation at Day 21 (CRI).",
+            "fertilizationAction": "Basal application: 50% N + 100% P + 100% K during final seedbed preparation.",
+            "pestSurveillance": "Inspect for termite attack and pre-emergence weed flushes (Phalaris minor)."
+          },
+          {
+            "phaseName": "Tillering & Stem Elongation",
+            "dayRange": "Days 26-60",
+            "irrigationSchedule": "Second irrigation at active tillering (Day 40-45). Maintain uniform moisture.",
+            "fertilizationAction": "First top dressing: 25% Nitrogen (Urea) broadcast immediately prior to irrigation.",
+            "pestSurveillance": "Monitor for yellow rust pustules on lower leaves; install yellow sticky traps."
+          },
+          {
+            "phaseName": "Booting & Flowering / Heading",
+            "dayRange": "Days 61-90",
+            "irrigationSchedule": "Critical irrigation at heading stage. Avoid water stress to prevent floret abortion.",
+            "fertilizationAction": "Final foliar spray of 1% Potassium Nitrate (13:0:45) to enhance grain filling.",
+            "pestSurveillance": "Scout for wheat aphids (Sitobion avenae); threshold 10 aphids per earhead."
+          },
+          {
+            "phaseName": "Grain Hardening & Maturation",
+            "dayRange": "Days 91-125",
+            "irrigationSchedule": "Last light irrigation at dough stage. Discontinue irrigation 12 days before harvest.",
+            "fertilizationAction": "Zero fertilization. Allow natural senescence and nutrient remobilization.",
+            "pestSurveillance": "Monitor grain moisture; target 12-14% moisture content for mechanical combine harvest."
+          }
+        ],
+        "economicOutlook": {
+          "estimatedCostPerAcre": 14500,
+          "estimatedRevenuePerAcre": 58800,
+          "recommendedMarketWindow": "Early April peak procurement with MSP window"
+        },
+        "targetSeason": "Rabi / Winter",
+        "weatherContext": {
+          "avgTemperatureCelsius": 18.5,
+          "rainfallForecastMm": 45,
+          "relativeHumidityPercent": 62
+        }
+      },
+      "createdAt": "2026-09-25T07:00:49.186Z"
+    }
+  ],
+  "pathologyScans": [
+    {
+      "id": "0808bf83-329f-4a89-89c5-80c2b495f0b3",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "fieldId": null,
+      "cropName": "Potato (Solanum tuberosum) (Solanum tuberosum / lycopersicum)",
+      "imageUrl": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=",
+      "diagnosisLabel": "Early Blight (Alternaria solani)",
+      "severity": "Moderate",
+      "pathogenType": "Fungal (Alternaria solani)",
+      "treatmentProtocols": {
+        "cropIdentified": "Potato (Solanum tuberosum) (Solanum tuberosum / lycopersicum)",
+        "diagnosisLabel": "Early Blight (Alternaria solani)",
+        "severity": "Moderate",
+        "pathogenType": "Fungal (Alternaria solani)",
+        "symptomsObserved": [
+          "Concentric dark rings creating target-board foliar lesions",
+          "Yellow chlorotic halos surrounding irregular brown spots",
+          "Premature senescence of lower canopy leaves",
+          "Vascular necrosis at petiole junctions"
+        ],
+        "treatments": {
+          "chemicalIntervention": "Foliar application of Mancozeb 75% WP @ 2.5g/liter or Azoxystrobin 18.2% + Difenoconazole 11.4% SC @ 1ml/liter.",
+          "organicAlternative": "Bacillus subtilis bio-fungicide (Serenade) foliar spray @ 5ml/liter or 5% cold-pressed Neem seed kernel extract.",
+          "culturalPreventativeMeasures": "Implement 3-year crop rotation with non-solanaceous crops. Maintain drip irrigation to prevent foliar wetting."
+        },
+        "quarantineRequired": false
+      },
+      "createdAt": "2026-09-30T07:57:10.360Z"
+    },
+    {
+      "id": "e5f6a1b2-c3d4-4e5f-cf6a-7b8c9d0e1f2b",
+      "userId": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "fieldId": "b2c3d4e5-f6a1-4b2c-9d3e-4f5a6b7c8d9e",
+      "cropName": "Cotton (Gossypium hirsutum)",
+      "imageUrl": "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=600&q=80",
+      "diagnosisLabel": "Cotton Leaf Curl Virus (CLCuV) & Whitefly Infestation",
+      "severity": "Moderate",
+      "pathogenType": "Viral (Begomovirus transmitted by Bemisia tabaci)",
+      "treatmentProtocols": {
+        "cropIdentified": "Cotton (Gossypium hirsutum)",
+        "diagnosisLabel": "Cotton Leaf Curl Virus (CLCuV)",
+        "severity": "Moderate",
+        "pathogenType": "Viral / Insect Vector",
+        "symptomsObserved": [
+          "Upward and downward curling of upper leaves",
+          "Thickening of veins on underside of foliage",
+          "Enation (leaf-like outgrowths) on veins",
+          "Stunted internodes on active branches"
+        ],
+        "treatments": {
+          "chemicalIntervention": "Foliar application of Diafenthiuron 50% WP @ 250g/acre or Pyriproxyfen 10% EC @ 400ml/acre to suppress vector whitefly population.",
+          "organicAlternative": "Neem seed kernel extract (NSKE 5%) or 1500 ppm Azadirachtin @ 5ml/liter of water with sticker agent; release Chrysoperla carnea predators.",
+          "culturalPreventativeMeasures": "Eradicate alternate weed hosts (Abutilon indicum, Parthenium hysterophorus) along field bunds. Install yellow sticky traps (15 traps/acre)."
+        },
+        "quarantineRequired": false
+      },
+      "createdAt": "2026-09-28T07:00:49.186Z"
+    }
+  ]
+}

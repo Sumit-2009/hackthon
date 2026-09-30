@@ -1,0 +1,287 @@
+import React from 'react';
+import { Link } from 'wouter';
+import { 
+  useDashboardStats, 
+  useFields, 
+  useAdvisories, 
+  useScans 
+} from '../hooks/useAgriApi';
+import { 
+  Sparkles, 
+  Microscope, 
+  Plus, 
+  MapPin, 
+  Layers, 
+  TrendingUp, 
+  AlertTriangle, 
+  CheckCircle2, 
+  ChevronRight, 
+  Calendar, 
+  Droplet,
+  Compass,
+  ArrowUpRight
+} from 'lucide-react';
+import { WeatherForecastBadge } from '../components/WeatherForecastBadge';
+
+export const Dashboard: React.FC = () => {
+  const { data: stats, isLoading: statsLoading } = useDashboardStats();
+  const { data: fields } = useFields();
+  const { data: advisories } = useAdvisories();
+  const { data: scans } = useScans();
+
+  return (
+    <div className="space-y-8 pb-12">
+      {/* Hero Welcome & Quick Launch */}
+      <div className="relative rounded-3xl overflow-hidden glass-panel border border-emerald-500/20 p-6 md:p-8 bg-gradient-to-br from-emerald-950/40 via-slate-950 to-slate-900 shadow-xl">
+        <div className="absolute right-0 top-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-medium">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>AI Agronomy & Pathology Intelligence</span>
+            </div>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+              Executive Crop Telemetry & Agronomic Operations
+            </h1>
+            <p className="text-sm md:text-base text-slate-300 leading-relaxed font-sans">
+              Convert soil N-P-K profiles, regional weather feeds, and foliage pathology scans into mathematically grounded, phased field protocols.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/advisory/new"
+              className="px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/25 transition-transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Run Soil Advisory</span>
+            </Link>
+
+            <Link
+              href="/diagnostics"
+              className="px-5 py-3 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-emerald-500/40 font-semibold text-sm flex items-center gap-2 transition-all hover:-translate-y-0.5"
+            >
+              <Microscope className="w-4 h-4 text-emerald-400" />
+              <span>Visual Crop Doctor</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Weather Telemetry Widget */}
+      <WeatherForecastBadge
+        temperature={22.4}
+        rainfallMm={85}
+        humidity={64}
+      />
+
+      {/* KPI Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Total Parcels */}
+        <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
+          <div className="space-y-1">
+            <span className="text-xs text-slate-400 font-medium">Operational Plots</span>
+            <div className="text-2xl font-bold font-mono text-slate-100">
+              {stats?.activeFieldsCount ?? 3}
+            </div>
+            <p className="text-[11px] text-emerald-400 flex items-center gap-1">
+              <span>Under active surveillance</span>
+            </p>
+          </div>
+          <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <Layers className="w-6 h-6" />
+          </div>
+        </div>
+
+        {/* Total Acreage */}
+        <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
+          <div className="space-y-1">
+            <span className="text-xs text-slate-400 font-medium">Acreage Managed</span>
+            <div className="text-2xl font-bold font-mono text-emerald-400">
+              {stats?.totalAcres ?? '145.8'} <span className="text-sm font-normal text-slate-400">ac</span>
+            </div>
+            <p className="text-[11px] text-slate-400">GIS calibrated parcels</p>
+          </div>
+          <div className="w-12 h-12 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-emerald-300">
+            <MapPin className="w-6 h-6" />
+          </div>
+        </div>
+
+        {/* Advisories Synthesized */}
+        <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
+          <div className="space-y-1">
+            <span className="text-xs text-slate-400 font-medium">Precision Advisories</span>
+            <div className="text-2xl font-bold font-mono text-slate-100">
+              {stats?.advisoriesGenerated ?? 1}
+            </div>
+            <p className="text-[11px] text-emerald-400">Phased crop calendars</p>
+          </div>
+          <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <Sparkles className="w-6 h-6" />
+          </div>
+        </div>
+
+        {/* High Risk Threats */}
+        <div className="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
+          <div className="space-y-1">
+            <span className="text-xs text-slate-400 font-medium">Active Pathogen Risks</span>
+            <div className="text-2xl font-bold font-mono text-amber-400">
+              {stats?.highRiskThreats ?? 1}
+            </div>
+            <p className="text-[11px] text-amber-400/90">Pathology scans triaged</p>
+          </div>
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+            <AlertTriangle className="w-6 h-6" />
+          </div>
+        </div>
+      </div>
+
+      {/* Main Two-Column Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Column (2 spans): Operational Field Parcels */}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-bold text-slate-100">Registered Field Parcels</h2>
+              <p className="text-xs text-slate-400">Soil profile & irrigation infrastructure per plot</p>
+            </div>
+            <Link
+              href="/fields"
+              className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
+            >
+              <span>Manage all ({fields?.length ?? 3})</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {fields?.slice(0, 4).map((field) => (
+              <div
+                key={field.id}
+                className="glass-panel glass-panel-hover rounded-2xl p-5 border border-slate-800 space-y-3 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="font-bold text-slate-100 text-sm">{field.name}</h3>
+                    <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap">
+                      {field.acreage} ac
+                    </span>
+                  </div>
+
+                  <div className="space-y-1.5 text-xs text-slate-400">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Soil Classification:</span>
+                      <span className="text-slate-300 font-medium">{field.soilType}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Irrigation:</span>
+                      <span className="text-slate-300 font-medium">{field.irrigationType}</span>
+                    </div>
+                  </div>
+
+                  {field.historicalNotes && (
+                    <p className="text-[11px] text-slate-400 line-clamp-2 mt-2 pt-2 border-t border-slate-800/80 italic">
+                      "{field.historicalNotes}"
+                    </p>
+                  )}
+                </div>
+
+                <div className="pt-2 flex items-center justify-between gap-2 border-t border-slate-800/80">
+                  <span className="text-[10px] font-mono text-slate-400">
+                    {field.latitude && field.longitude ? `${Number(field.latitude).toFixed(2)}°N, ${Number(field.longitude).toFixed(2)}°E` : 'GPS Calibrated'}
+                  </span>
+                  <Link
+                    href={`/advisory/new?fieldId=${field.id}`}
+                    className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
+                  >
+                    <span>Synthesize Plan</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column (1 span): Recent Advisories & Pathology Alerts */}
+        <div className="space-y-6">
+          {/* Recent Advisories */}
+          <div className="glass-panel rounded-2xl p-5 border border-slate-800 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-bold text-slate-100 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <span>Recent Advisory Plans</span>
+              </h2>
+              <Link href="/history" className="text-[11px] text-slate-400 hover:text-emerald-400">
+                View all
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {advisories?.slice(0, 3).map((adv) => (
+                <Link
+                  key={adv.id}
+                  href={`/advisory/${adv.id}`}
+                  className="block p-3 rounded-xl bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500/30 transition-colors group"
+                >
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <span className="text-xs font-bold text-slate-200 group-hover:text-emerald-300 transition-colors">
+                      {adv.cropName}
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400">
+                      {adv.confidenceScore}% Fit
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 line-clamp-1">
+                    {adv.advisorySummary}
+                  </p>
+                  <div className="mt-2 flex items-center justify-between text-[10px] font-mono text-slate-500">
+                    <span>Est. Yield: {adv.projectedYieldQuintalsPerAcre} q/ac</span>
+                    <span>{new Date(adv.createdAt).toLocaleDateString()}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Pathology Triage Alert Mini-Feed */}
+          <div className="glass-panel rounded-2xl p-5 border border-slate-800 space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-bold text-slate-100 flex items-center gap-2">
+                <Microscope className="w-4 h-4 text-emerald-400" />
+                <span>Field Pathology Feed</span>
+              </h2>
+              <Link href="/diagnostics" className="text-[11px] text-emerald-400 font-semibold">
+                + New Scan
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {scans?.slice(0, 3).map((scan) => (
+                <div
+                  key={scan.id}
+                  className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="space-y-0.5">
+                      <span className="text-xs font-bold text-slate-200">{scan.diagnosisLabel}</span>
+                      <p className="text-[11px] text-slate-400">Host: {scan.cropName}</p>
+                    </div>
+                    <span className={`text-[10px] font-mono font-bold uppercase px-1.5 py-0.5 rounded border ${
+                      scan.severity === 'Critical' ? 'bg-rose-500/20 text-rose-300 border-rose-500/30' :
+                      scan.severity === 'Severe' ? 'bg-amber-500/20 text-amber-300 border-amber-500/30' :
+                      'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                    }`}>
+                      {scan.severity}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
