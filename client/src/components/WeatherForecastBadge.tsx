@@ -18,26 +18,26 @@ export const WeatherForecastBadge: React.FC<WeatherForecastBadgeProps> = ({
   const isHumid = humidity > 70;
 
   return (
-    <div className="glass-panel p-4 border-4 border-[#00ffff] bg-[#000033] shadow-[6px_6px_0px_#ff00ff] flex flex-wrap items-center justify-between gap-4 select-none">
+    <div className="glass-panel rounded-2xl p-4 border border-emerald-500/15 flex flex-wrap items-center justify-between gap-4">
       {/* Weather Condition Icon & Main Indicator */}
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 bg-[#ffff00] border-2 border-black flex items-center justify-center text-red-600 animate-spin" style={{ animationDuration: '8s' }}>
+        <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500/20 to-emerald-500/20 border border-sky-500/30 flex items-center justify-center text-sky-400">
           {isHighRain ? (
-            <CloudRain className="w-8 h-8 animate-bounce text-blue-600" />
+            <CloudRain className="w-6 h-6 animate-bounce" />
           ) : (
-            <Sun className="w-8 h-8 text-red-600" />
+            <Sun className="w-6 h-6 text-amber-400" />
           )}
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-base font-black text-[#ffff00] uppercase tracking-wider">
-              {isHighRain ? '⚠️ ACID MONSOON APOCALYPSE' : '☢️ SOLAR FLARE MICROWAVE LEVEL 5'}
+            <span className="text-sm font-semibold text-slate-100">
+              {isHighRain ? 'High Precipitation Zone' : 'Moderate Weather Telemetry'}
             </span>
-            <span className="text-[10px] font-mono uppercase px-2 py-0.5 bg-[#ff0000] text-white font-black animate-ping">
-              DANGER
+            <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">
+              Live Feed
             </span>
           </div>
-          <p className="text-xs text-[#00ffcc] font-mono">Telemetry reported by broken satellite in low orbit</p>
+          <p className="text-xs text-slate-400">Regional micro-climate calibrated for active phenology</p>
         </div>
       </div>
 

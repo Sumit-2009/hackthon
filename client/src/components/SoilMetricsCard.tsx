@@ -28,25 +28,25 @@ export const SoilMetricsCard: React.FC<SoilMetricsCardProps> = ({
 }) => {
   // Helper to determine status color and label
   const getPhStatus = (val: number) => {
-    if (val < 5.5) return { label: '☣️ ACID HAZARD (LIME BOMB REQUIRED)', color: 'text-[#ff0055]', bg: 'bg-[#ff0055]/30', border: 'border-[#ff0055]', bar: 'bg-[#ff0055]' };
-    if (val > 7.8) return { label: '☢️ ALKALINE PURGATORY (POUR GYPSUM)', color: 'text-[#ffff00]', bg: 'bg-[#ffff00]/30', border: 'border-[#ffff00]', bar: 'bg-[#ffff00]' };
-    return { label: '★ BUGGY OK BUFFER ZONE ★', color: 'text-[#00ff66]', bg: 'bg-[#00ff66]/20', border: 'border-[#00ff66]', bar: 'bg-[#00ff66]' };
+    if (val < 5.5) return { label: 'Acidic (Liming Needed)', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/30', bar: 'bg-amber-500' };
+    if (val > 7.8) return { label: 'Alkaline (Gypsum Needed)', color: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/30', bar: 'bg-rose-500' };
+    return { label: 'Optimal Buffer Zone', color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', bar: 'bg-emerald-500' };
   };
 
   const getNStatus = (val: number) => {
-    if (val < 150) return { label: '⚠️ NITROGEN DRAIN ERROR (PRAY)', color: 'text-[#ff00ff]', bar: 'bg-[#ff00ff]' };
-    if (val > 350) return { label: '💥 OVERDOSED WITH NITROGEN (FIRE)', color: 'text-[#ff0000]', bar: 'bg-[#ff0000]' };
-    return { label: 'ADEQUATE FOR SURVIVAL', color: 'text-[#00ff66]', bar: 'bg-[#00ff66]' };
+    if (val < 150) return { label: 'Deficient (Top-Dress Split)', color: 'text-amber-400', bar: 'bg-amber-500' };
+    if (val > 350) return { label: 'Excessive (Lodging Risk)', color: 'text-rose-400', bar: 'bg-rose-500' };
+    return { label: 'Optimal Nitrogen Balance', color: 'text-emerald-400', bar: 'bg-emerald-500' };
   };
 
   const getPStatus = (val: number) => {
-    if (val < 18) return { label: '💀 ROOTS WILL FAIL TO GROW', color: 'text-[#ffff00]', bar: 'bg-[#ffff00]' };
-    return { label: 'PHOSPHORUS BIO-OK', color: 'text-[#00ff66]', bar: 'bg-[#00ff66]' };
+    if (val < 18) return { label: 'Low (Basal DAP Required)', color: 'text-amber-400', bar: 'bg-amber-500' };
+    return { label: 'Adequate Bioavailability', color: 'text-emerald-400', bar: 'bg-emerald-500' };
   };
 
   const getKStatus = (val: number) => {
-    if (val < 140) return { label: '📉 STEMS FLOPPING OVER (WEAK)', color: 'text-[#ff0055]', bar: 'bg-[#ff0055]' };
-    return { label: 'POTASSIUM SUPERCHARGED', color: 'text-[#00ff66]', bar: 'bg-[#00ff66]' };
+    if (val < 140) return { label: 'Low (MOP Enrichment)', color: 'text-amber-400', bar: 'bg-amber-500' };
+    return { label: 'Optimal Structural Strength', color: 'text-emerald-400', bar: 'bg-emerald-500' };
   };
 
   const phStatus = getPhStatus(ph);
@@ -55,9 +55,9 @@ export const SoilMetricsCard: React.FC<SoilMetricsCardProps> = ({
   const kStatus = getKStatus(potassiumPpm);
 
   return (
-    <div className="glass-panel p-5 border-4 border-[#ff00ff] bg-[#1a0033] shadow-[6px_6px_0px_#ffff00]">
+    <div className="glass-panel rounded-2xl p-5 border border-emerald-500/15">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 mb-4 border-b-2 border-dashed border-[#00ffff]">
+      <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
             <Activity className="w-4 h-4" />

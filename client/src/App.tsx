@@ -9,7 +9,6 @@ import { AdvisoryWizard } from './pages/AdvisoryWizard';
 import { AdvisoryDetail } from './pages/AdvisoryDetail';
 import { DiagnosticDoctor } from './pages/DiagnosticDoctor';
 import { HistoryPage } from './pages/HistoryPage';
-import { GlitchOverlays } from './components/GlitchOverlays';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,10 +22,7 @@ const queryClient = new QueryClient({
 export const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-[#0f001f] text-[#00ff66] flex flex-col font-mono selection:bg-[#ff00ff] selection:text-[#ffff00]">
-        {/* Chaotic Marquee & Floating Error Popups */}
-        <GlitchOverlays />
-
+      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
         {/* Top Sticky Header */}
         <Navbar />
 

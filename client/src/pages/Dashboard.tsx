@@ -32,36 +32,38 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="space-y-8 pb-12">
       {/* Hero Welcome & Quick Launch */}
-      <div className="relative glass-panel p-6 border-4 border-[#ff0055] bg-[#1a0033] shadow-[8px_8px_0px_#00ffff]">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="relative rounded-3xl overflow-hidden glass-panel border border-emerald-500/20 p-6 md:p-8 bg-gradient-to-br from-emerald-950/40 via-slate-950 to-slate-900 shadow-xl">
+        <div className="absolute right-0 top-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#ffff00] text-black border-2 border-black text-xs font-black uppercase tracking-wider animate-bounce">
-              <Sparkles className="w-4 h-4 text-red-600" />
-              <span>★ 100% FREE AGRONOMY MATRIX (NO VIRUS GUARANTEE) ★</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-medium">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>AI Agronomy & Pathology Intelligence</span>
             </div>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-wider text-[#00ff66] rainbow-glitch">
-              ☣️ EXECUTIVE CROP TELEMETRY & GLITCH HAVOC ☣️
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+              Executive Crop Telemetry & Agronomic Operations
             </h1>
-            <p className="text-xs md:text-sm text-[#00ffff] font-mono leading-relaxed bg-[#000000] p-2 border border-[#ff00ff]">
-              Convert buggy soil N-P-K profiles, lightning storms, and radioactive foliage scans into unhinged agricultural protocols.
+            <p className="text-sm md:text-base text-slate-300 leading-relaxed font-sans">
+              Convert soil N-P-K profiles, regional weather feeds, and foliage pathology scans into mathematically grounded, phased field protocols.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/advisory/new"
-              className="px-5 py-3 bg-[#00ff00] text-black font-black text-sm flex items-center gap-2 border-4 border-black hover:bg-[#ff00ff] hover:text-white shadow-[6px_6px_0px_#ff0000] glitch-vibrate transition-all active:translate-x-1 active:translate-y-1"
+              className="px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 text-slate-950 font-bold text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/25 transition-transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              <Sparkles className="w-5 h-5 text-red-600 animate-spin" />
-              <span>CLICK TO DISCOVER NEW WEED</span>
+              <Sparkles className="w-4 h-4" />
+              <span>Run Soil Advisory</span>
             </Link>
 
             <Link
               href="/diagnostics"
-              className="px-5 py-3 bg-[#ffff00] text-black font-black text-sm flex items-center gap-2 border-4 border-black hover:bg-[#00ffff] shadow-[6px_6px_0px_#0000ff] glitch-vibrate transition-all active:translate-x-1 active:translate-y-1"
+              className="px-5 py-3 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-emerald-500/40 font-semibold text-sm flex items-center gap-2 transition-all hover:-translate-y-0.5"
             >
-              <Microscope className="w-5 h-5 text-blue-600 animate-pulse" />
-              <span>SUMMON CROP DOCTOR 9000</span>
+              <Microscope className="w-4 h-4 text-emerald-400" />
+              <span>Visual Crop Doctor</span>
             </Link>
           </div>
         </div>

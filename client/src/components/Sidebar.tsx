@@ -10,11 +10,7 @@ import {
   Droplets,
   Calendar,
   Layers,
-  Skull,
-  Flame,
-  Bomb,
-  Radio,
-  Construction
+  ChevronRight
 } from 'lucide-react';
 import { useDashboardStats } from '../hooks/useAgriApi';
 
@@ -22,15 +18,15 @@ interface NavItem {
   name: string;
   href: string;
   icon: React.ComponentType<{ className?: string }>;
-  tag: string;
+  badge?: string;
 }
 
 const navItems: NavItem[] = [
-  { name: '🔥 CHAOS DASHBOARD', href: '/', icon: LayoutDashboard, tag: 'HOT' },
-  { name: '🚜 DIRT / PLOTS (BUGGY)', href: '/fields', icon: Layers, tag: 'LAG' },
-  { name: '🧪 AI WEED ADVISOR 3000', href: '/advisory/new', icon: Sparkles, tag: 'NEW' },
-  { name: '☣️ VISUAL CROP DOCTOR', href: '/diagnostics', icon: Microscope, tag: 'TOXIC' },
-  { name: '📜 ANCIENT ARCHIVES', href: '/history', icon: History, tag: 'OLD' },
+  { name: 'Executive Dashboard', href: '/', icon: LayoutDashboard },
+  { name: 'Field Parcels', href: '/fields', icon: Layers },
+  { name: 'Precision Advisory', href: '/advisory/new', icon: Sparkles, badge: 'AI' },
+  { name: 'Visual Crop Doctor', href: '/diagnostics', icon: Microscope, badge: 'Vision' },
+  { name: 'Historical Archive', href: '/history', icon: History },
 ];
 
 export const Sidebar: React.FC = () => {
@@ -38,16 +34,14 @@ export const Sidebar: React.FC = () => {
   const { data: stats } = useDashboardStats();
 
   return (
-    <aside className="w-64 bg-[#140026] border-r-4 border-[#ffff00] p-3 hidden md:flex flex-col justify-between sticky top-[53px] h-[calc(100vh-53px)] font-mono select-none overflow-y-auto">
-      <div className="space-y-4">
+    <aside className="w-64 glass-panel border-r border-emerald-500/10 hidden md:flex flex-col justify-between p-4 sticky top-[61px] h-[calc(100vh-61px)]">
+      <div className="space-y-6">
         {/* Navigation Category */}
         <div>
-          <div className="bg-[#ff00ff] text-black font-black px-2 py-1 text-xs uppercase tracking-wider mb-2 flex items-center justify-between border-2 border-black">
-            <span>☣️ NAVIGATION SYS ☣️</span>
-            <span className="animate-spin text-sm">☢️</span>
-          </div>
-
-          <nav className="space-y-2">
+          <p className="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 font-mono mb-2">
+            Agronomy Command
+          </p>
+          <nav className="space-y-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location === item.href || (item.href !== '/' && location.startsWith(item.href));
@@ -55,53 +49,61 @@ export const Sidebar: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center justify-between px-3 py-2 text-xs font-black transition-all border-4 glitch-vibrate ${
+                  className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group ${
                     isActive
-                      ? 'bg-[#00ff66] text-[#000000] border-[#ff0055] shadow-[4px_4px_0_#ffff00] translate-x-1'
-                      : 'bg-[#000033] text-[#00ffff] border-[#333399] hover:bg-[#ff0055] hover:text-[#ffff00] hover:border-[#00ff00]'
+                      ? 'bg-gradient-to-r from-emerald-500/15 to-emerald-500/5 text-emerald-300 border border-emerald-500/30 shadow-sm'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
                   }`}
                 >
-                  <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 animate-bounce" />
-                    <span className="tracking-tight">{item.name}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon className={`w-4 h-4 transition-colors ${
+                      isActive ? 'text-emerald-400' : 'text-slate-500 group-hover:text-emerald-400'
+                    }`} />
+                    <span>{item.name}</span>
                   </div>
 
-                  <span className="text-[9px] px-1 bg-yellow-400 text-black font-extrabold border border-black animate-pulse">
-                    {item.tag}
-                  </span>
+                  {item.badge && (
+                    <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold uppercase tracking-wider ${
+                      isActive
+                        ? 'bg-emerald-500/20 text-emerald-300'
+                        : 'bg-slate-800 text-slate-400 group-hover:bg-emerald-500/10 group-hover:text-emerald-400'
+                    }`}>
+                      {item.badge}
+                    </span>
+                  )}
                 </Link>
               );
             })}
           </nav>
         </div>
 
-        {/* Construction gif banner */}
-        <div className="p-3 bg-[#ffff00] text-black border-4 border-[#ff0000] text-center font-bold text-xs space-y-1 rotate-[-1deg] shadow-[4px_4px_0_#000]">
-          <div className="flex items-center justify-center gap-1 text-red-600 animate-pulse">
-            <Construction className="w-5 h-5" />
-            <span className="tracking-widest">UNDER CONSTRUCTION</span>
-            <Construction className="w-5 h-5" />
+        {/* Quick Quicklaunch Card */}
+        <div className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-slate-900/40 to-slate-950 border border-emerald-500/20 relative overflow-hidden group">
+          <div className="absolute -right-4 -bottom-4 w-20 h-20 bg-emerald-500/10 rounded-full blur-xl pointer-events-none" />
+          <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold mb-1">
+            <TrendingUp className="w-3.5 h-3.5" />
+            <span>Telemetry Summary</span>
           </div>
-          <p className="text-[10px] leading-tight font-sans">
-            Page maintained by WebMaster 1999. Do not sign the guestbook with malicious intentions!
+          <p className="text-[12px] text-slate-300 mb-2">
+            Average projected harvest across monitored fields:
           </p>
-        </div>
-
-        {/* Hit Counter */}
-        <div className="bg-[#000000] p-2 border-2 border-[#00ff00] text-center">
-          <p className="text-[10px] text-[#00ff00] uppercase tracking-wider mb-1">TOTAL HACKER HITS:</p>
-          <div className="inline-block bg-[#222222] border-2 border-white px-3 py-1 font-mono font-black text-xl text-red-500 tracking-widest shadow-inner">
-            0 0 4 2 0 6 9
+          <div className="text-xl font-bold font-mono text-emerald-300">
+            {stats?.averageProjectedYield || '24.5 q/acre'}
+          </div>
+          <div className="mt-2 text-[11px] text-slate-400 flex items-center justify-between">
+            <span>Soil moisture status:</span>
+            <span className="text-emerald-400 font-medium">Optimal</span>
           </div>
         </div>
       </div>
 
       {/* Footer Info */}
-      <div className="pt-2 border-t-2 border-dashed border-[#ff00ff] text-[10px] text-yellow-300 font-mono text-center">
-        <span>BEST VIEWED WITH CRT MONITOR</span>
-        <div className="text-[9px] text-[#00ffff] animate-pulse">
-          ⚡ 56k DIAL-UP MODEM CONNECTED ⚡
-        </div>
+      <div className="pt-4 border-t border-slate-800/80 text-[11px] text-slate-500 font-mono flex items-center justify-between px-2">
+        <span>AgriSmart Core</span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+          Online
+        </span>
       </div>
     </aside>
   );
