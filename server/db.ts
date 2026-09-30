@@ -4,6 +4,7 @@ import * as schema from '../shared/schema.js';
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import os from 'os';
 
 // Default Demo User / Tenant
 export const DEFAULT_USER_ID = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
@@ -167,14 +168,13 @@ interface LocalDbStore {
   pathologyScans: schema.PathologyScan[];
 }
 
-const dataDir = path.resolve(process.cwd(), 'server', 'data');
+const isServerless = !!(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const bundledSeedPath = path.resolve(process.cwd(), 'server', 'data', 'agrismart_db.json');
+const dataDir = isServerless ? os.tmpdir() : path.resolve(process.cwd(), 'server', 'data');
 const dbFilePath = path.resolve(dataDir, 'agrismart_db.json');
 
 function ensureDataStore(): LocalDbStore {
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-
+  // 1. Try reading from target file path (in /tmp on Vercel, or local server/data)
   if (fs.existsSync(dbFilePath)) {
     try {
       const content = fs.readFileSync(dbFilePath, 'utf-8');
@@ -186,10 +186,33 @@ function ensureDataStore(): LocalDbStore {
         pathologyScans: parsed.pathologyScans || INITIAL_SCANS,
       };
     } catch (e) {
-      console.warn('[DB] Could not parse local store, re-initializing fresh dataset.');
+      console.warn('[DB] Could not parse existing store, attempting re-initialization.');
     }
   }
 
+  // 2. If in serverless mode and bundled seed file exists, seed from bundled file
+  if (isServerless && fs.existsSync(bundledSeedPath)) {
+    try {
+      const content = fs.readFileSync(bundledSeedPath, 'utf-8');
+      const parsed = JSON.parse(content);
+      const store: LocalDbStore = {
+        users: parsed.users || [DEFAULT_USER],
+        fields: parsed.fields || INITIAL_FIELDS,
+        cropAdvisories: parsed.cropAdvisories || INITIAL_ADVISORIES,
+        pathologyScans: parsed.pathologyScans || INITIAL_SCANS,
+      };
+      try {
+        fs.writeFileSync(dbFilePath, JSON.stringify(store, null, 2), 'utf-8');
+      } catch {
+        // If write fails, continue with in-memory store
+      }
+      return store;
+    } catch (e) {
+      console.warn('[DB] Could not read bundled seed file, initializing defaults.');
+    }
+  }
+
+  // 3. Fallback to hardcoded initial dataset
   const initialStore: LocalDbStore = {
     users: [DEFAULT_USER],
     fields: INITIAL_FIELDS,
@@ -197,7 +220,15 @@ function ensureDataStore(): LocalDbStore {
     pathologyScans: INITIAL_SCANS,
   };
 
-  fs.writeFileSync(dbFilePath, JSON.stringify(initialStore, null, 2), 'utf-8');
+  try {
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    fs.writeFileSync(dbFilePath, JSON.stringify(initialStore, null, 2), 'utf-8');
+  } catch (err) {
+    console.warn('[DB] Local filesystem write skipped or read-only, using memory store:', (err as Error).message);
+  }
+
   return initialStore;
 }
 
@@ -205,7 +236,7 @@ function saveStore(store: LocalDbStore) {
   try {
     fs.writeFileSync(dbFilePath, JSON.stringify(store, null, 2), 'utf-8');
   } catch (err) {
-    console.error('[DB] Failed to persist data to disk:', err);
+    console.warn('[DB] Note: Could not persist store to disk:', (err as Error).message);
   }
 }
 

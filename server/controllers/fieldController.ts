@@ -41,7 +41,13 @@ export async function createField(req: Request, res: Response) {
     }
 
     const newField = await db.createField({
-      ...validation.data,
+      name: validation.data.name,
+      soilType: validation.data.soilType,
+      irrigationType: validation.data.irrigationType,
+      acreage: String(validation.data.acreage),
+      latitude: validation.data.latitude !== undefined && validation.data.latitude !== null ? String(validation.data.latitude) : null,
+      longitude: validation.data.longitude !== undefined && validation.data.longitude !== null ? String(validation.data.longitude) : null,
+      historicalNotes: validation.data.historicalNotes ?? null,
       userId,
     });
 
